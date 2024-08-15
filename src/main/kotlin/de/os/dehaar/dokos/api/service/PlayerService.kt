@@ -1,6 +1,6 @@
-package de.os.dehaar.dokos_rest_api.service
+package de.os.dehaar.dokos.api.service
 
-import de.os.dehaar.dokos_rest_api.repository.PlayerRepository
+import de.os.dehaar.dokos.api.repository.PlayerRepository
 import org.springframework.stereotype.Service
 
 @Service

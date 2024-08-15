@@ -1,4 +1,4 @@
-package de.os.dehaar.dokos_rest_api
+package de.os.dehaar.dokos.api
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

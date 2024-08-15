@@ -1,4 +1,4 @@
-package de.os.dehaar.dokos_rest_api.config
+package de.os.dehaar.dokos.api.config
 
 import io.swagger.v3.oas.models.OpenAPI
 import io.swagger.v3.oas.models.info.Info

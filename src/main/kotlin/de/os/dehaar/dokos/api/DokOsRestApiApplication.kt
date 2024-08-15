@@ -1,4 +1,4 @@
-package de.os.dehaar.dokos_rest_api
+package de.os.dehaar.dokos.api
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

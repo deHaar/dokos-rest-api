@@ -1,6 +1,6 @@
-package de.os.dehaar.dokos_rest_api.controller
+package de.os.dehaar.dokos.api.controller
 
-import de.os.dehaar.dokos_rest_api.service.PlayerService
+import de.os.dehaar.dokos.api.service.PlayerService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController

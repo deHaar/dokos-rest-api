@@ -1,4 +1,4 @@
-package de.os.dehaar.dokos_rest_api.entity
+package de.os.dehaar.dokos.api.entity
 
 import jakarta.persistence.*
 import jakarta.validation.constraints.Email
