@@ -12,7 +12,7 @@ class PlayerService(var playerRepository: PlayerRepository) {
 
     fun getById(playerId: Long): Optional<Player> { return playerRepository.findById(playerId) }
 
-    fun add(nick: String, email: String): Player { return playerRepository.save(Player(nick, email)) }
+    fun add(displayName: String, email: String): Player { return playerRepository.save(Player(null, displayName, email)) }
 
     fun deleteById(playerId: Long) { playerRepository.deleteById(playerId) }
 }

@@ -6,3 +6,8 @@ A RESTful API for the purpose of storing results from games and rounds of the ca
 ```shell
 ./gradlew clean build -x test
 ```
+
+2. try to run the compose file with the command
+```shell
+podman compose --file podman-compose.yml up --detach
+```

@@ -21,9 +21,8 @@ services:
 
   back:
     build:
-      context: ./back
       target:  finalApp
-    image: dehaar/dokos-api
+    image: dokos-backend
     container_name: dokos-backend
     #environment:
     #  WAIT_HOSTS: postgres:5433
@@ -32,19 +31,8 @@ services:
     depends_on:
       - db
     networks:
-      - frontback
       - backdb
-
-  front:
-    build: ./front
-    image: yahiadev/books-front
-    container_name: books-front
-    ports:
-      - 8080:8080
-    depends_on:
-      - back
-    networks:
-      - frontback
+    #  - frontback
 
 networks:
   backdb:

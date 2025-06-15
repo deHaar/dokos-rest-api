@@ -16,4 +16,4 @@ COPY --from=builder /home/gradle/src/build/libs/dokos-rest-api-0.0.1-SNAPSHOT.ja
 
 EXPOSE 8090
 
-ENTRYPOINT ["java", "-jar", "/app/dokos-rest-api.jar"]
+ENTRYPOINT ["java", "-jar", "/app/dokos-rest-api-0.0.1-SNAPSHOT.jar"]
