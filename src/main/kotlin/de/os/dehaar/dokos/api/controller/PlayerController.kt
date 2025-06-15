@@ -1,7 +1,6 @@
 package de.os.dehaar.dokos.api.controller
 
 import de.os.dehaar.dokos.api.entity.Player
-import de.os.dehaar.dokos.api.entity.PlayerTO
 import de.os.dehaar.dokos.api.service.PlayerService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -16,23 +15,29 @@ class PlayerController(var playerService: PlayerService) {
 
     @GetMapping("/all")
     fun allPlayers(): ResponseEntity<List<Player>> {
-        val players = playerService.playerRepository.findAll()
+        val players = playerService.getAll()
         return ResponseEntity.ok(players)
     }
 
     @PostMapping("/add")
     fun addPlayer(nick: String, email: String): ResponseEntity<Player> {
-        val player = playerService.playerRepository.save(Player(nick, email))
+        val player = playerService.add(nick, email)
         return ResponseEntity.ok(player)
     }
 
     @GetMapping("/{playerId}")
     fun playerById(@RequestParam playerId: Long): ResponseEntity<Player> {
-        val player = playerService.playerRepository.findById(playerId)
+        val player = playerService.getById(playerId)
         return if (player.isEmpty) {
             ResponseEntity.notFound().build()
         } else {
             ResponseEntity.ok(player.get())
         }
+    }
+
+    @PostMapping("/{playerId}/delete")
+    fun deleteById(@RequestParam playerId: Long): ResponseEntity<Player> {
+        playerService.deleteById(playerId)
+        return ResponseEntity.noContent().build()
     }
 }
