@@ -7,15 +7,14 @@ import jakarta.validation.constraints.NotBlank
 @Entity
 class Player @JvmOverloads constructor(
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
+
     @NotBlank
-    val nick: String,
+    val displayName: String,
 
     @Email
     @NotBlank
-    val email: String,
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null
-
+    val email: String
 )
