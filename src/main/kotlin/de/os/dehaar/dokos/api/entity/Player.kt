@@ -8,8 +8,8 @@ import jakarta.validation.constraints.NotBlank
 class Player @JvmOverloads constructor(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    @GeneratedValue(strategy = GenerationType.UUID)
+    val id: String? = null,
 
     @NotBlank
     val displayName: String,
