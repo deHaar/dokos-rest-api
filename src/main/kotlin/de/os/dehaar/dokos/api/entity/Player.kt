@@ -18,4 +18,4 @@ class Player @JvmOverloads constructor(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
 
-){}
+)
