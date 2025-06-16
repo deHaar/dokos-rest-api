@@ -1,6 +1,6 @@
 version: '3.6'
 services:
-  db:
+  dokos-db:
     image: postgres
     #hostname: postgres
     container_name: dokos-database
@@ -27,9 +27,9 @@ services:
     #environment:
     #  WAIT_HOSTS: postgres:5433
     ports:
-      - 8090:8090
+      - 8090:8080
     depends_on:
-      - db
+      - dokos-db
     networks:
       - backdb
     #  - frontback

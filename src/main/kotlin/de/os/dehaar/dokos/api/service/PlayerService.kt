@@ -8,7 +8,7 @@ import java.util.Optional
 @Service
 class PlayerService(var playerRepository: PlayerRepository) {
 
-    fun getAll(): List<Player> { return playerRepository.findAll()}
+    fun getAll(): List<Player> { return playerRepository.findAll() }
 
     fun getById(playerId: Long): Optional<Player> { return playerRepository.findById(playerId) }
 
