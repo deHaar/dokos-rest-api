@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import java.util.UUID
 
 @RestController
 @RequestMapping("/players")
@@ -26,7 +27,7 @@ class PlayerController(var playerService: PlayerService) {
     }
 
     @GetMapping("/{playerId}")
-    fun playerById(@RequestParam playerId: Long): ResponseEntity<Player> {
+    fun playerById(@RequestParam playerId: UUID): ResponseEntity<Player> {
         val player = playerService.getById(playerId)
         return if (player.isEmpty) {
             ResponseEntity.notFound().build()
@@ -36,7 +37,7 @@ class PlayerController(var playerService: PlayerService) {
     }
 
     @PostMapping("/{playerId}/delete")
-    fun deleteById(@RequestParam playerId: Long): ResponseEntity<Player> {
+    fun deleteById(@RequestParam playerId: UUID): ResponseEntity<Player> {
         playerService.deleteById(playerId)
         return ResponseEntity.noContent().build()
     }
