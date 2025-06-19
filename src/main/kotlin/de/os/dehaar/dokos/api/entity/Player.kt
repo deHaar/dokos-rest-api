@@ -1,21 +1,24 @@
 package de.os.dehaar.dokos.api.entity
 
-import jakarta.persistence.*
+import jakarta.persistence.Entity
+import jakarta.persistence.Id
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
+import java.util.UUID
 
 @Entity
 class Player @JvmOverloads constructor(
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    val id: UUID? = null,
+
     @NotBlank
-    val nick: String,
+    val displayName: String,
 
     @Email
     @NotBlank
-    val email: String,
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null
-
-){}
+    val email: String
+)

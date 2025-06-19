@@ -1,15 +1,22 @@
 plugins {
 	kotlin("jvm") version "2.0.10"
 	kotlin("plugin.spring") version "2.0.10"
+	kotlin("plugin.jpa") version "2.0.10"
 	id("org.springframework.boot") version "3.3.2"
 	id("io.spring.dependency-management") version "1.1.6"
-	kotlin("plugin.jpa") version "2.0.10"
+}
+
+sourceSets.main {
+	java.srcDirs("src/main/kotlin", "src/test/kotlin")
 }
 
 group = "de.os.dehaar"
 version = "0.0.1-SNAPSHOT"
 
 java {
+	sourceCompatibility = JavaVersion.toVersion(22)
+	targetCompatibility = JavaVersion.toVersion(22)
+
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(22)
 	}
@@ -28,7 +35,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
 	implementation("org.springdoc:springdoc-openapi-starter-common:2.6.0")
-	runtimeOnly("com.h2database:h2")
+	// runtimeOnly("com.h2database:h2")
+	implementation("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
@@ -36,6 +44,8 @@ dependencies {
 
 kotlin {
 	compilerOptions {
+		// jvmTarget()
+		jvmToolchain(22)
 		freeCompilerArgs.addAll("-Xjsr305=strict")
 	}
 }
