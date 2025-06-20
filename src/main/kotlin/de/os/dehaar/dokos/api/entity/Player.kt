@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
+import org.hibernate.annotations.CreationTimestamp
+import java.time.Instant
 import java.util.UUID
 
 @Entity
@@ -20,5 +22,8 @@ class Player @JvmOverloads constructor(
 
     @Email
     @NotBlank
-    val email: String
+    val email: String,
+
+    @CreationTimestamp
+    val createdAt: Instant = Instant.now()
 )

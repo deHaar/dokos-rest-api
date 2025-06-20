@@ -29,10 +29,10 @@ class PlayerController(var playerService: PlayerService) {
     @GetMapping("/{playerId}")
     fun playerById(@RequestParam playerId: UUID): ResponseEntity<Player> {
         val player = playerService.getById(playerId)
-        return if (player.isEmpty) {
-            ResponseEntity.notFound().build()
+        return if (player != null) {
+            ResponseEntity.ok(player)
         } else {
-            ResponseEntity.ok(player.get())
+            ResponseEntity.notFound().build<Player>()
         }
     }
 

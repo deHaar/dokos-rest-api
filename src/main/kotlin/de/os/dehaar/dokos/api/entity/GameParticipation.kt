@@ -15,9 +15,10 @@ class GameParticipation (
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long? = null,
 
+    // TODO implement constraint: Player has to be member of the round the game he participates is played in
     @OneToOne
     @JoinColumn(name = "fk_player_id", referencedColumnName = "id")
-    val player: Player, // constraint: Player has to be member of the round the game he participates is played in
+    val player: Player,
 
     val team: Team,
 

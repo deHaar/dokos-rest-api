@@ -11,9 +11,11 @@ class PlayerService(var playerRepository: PlayerRepository) {
 
     fun getAll(): List<Player> { return playerRepository.findAll() }
 
-    fun getById(playerId: UUID): Optional<Player> { return playerRepository.findById(playerId) }
+    fun getById(playerId: UUID): Player? { return playerRepository.findById(playerId).get() }
 
-    fun add(displayName: String, email: String): Player { return playerRepository.save(Player(null, displayName, email)) }
+    fun add(displayName: String, email: String): Player {
+        return playerRepository.save(Player(null, displayName, email))
+    }
 
     fun deleteById(playerId: UUID) { playerRepository.deleteById(playerId) }
 }
