@@ -1,0 +1,79 @@
+@startuml DokOS REST API — Entities
+/'
+    class definitions
+'/
+
+class Round {
+    id: Long
+    participants: List<RoundParticipation>
+    games: List<Game>
+    created: Instant
+}
+
+class Player {
+    id: UUID
+    displayName: String
+    email: String
+    roundParticipations: List<RoundParticipation>
+    gameParticipations: List<GameParticipation>
+    created: Instant
+}
+
+class Game {
+    id: Long
+    value: Int
+    winnerTeam: Team
+    forehand: GameParticipation
+    secondHand: GameParticipation
+    thirdHand: GameParticipation
+    backhand: GameParticipation
+    created: Instant
+}
+
+enum Team {
+    RE,
+    KONTRA
+}
+
+class RoundParticipation {
+    id: RoundParticipationId
+    player: Player
+    round: Round
+    score: Int
+    created: Instant
+}
+
+class RoundParticipationId {
+    roundId: Long
+    playerId: UUID
+    created: Instant
+}
+
+class GameParticipation {
+    id: gameParticipationId
+    player: Player
+    game: Game
+    team: Team
+    created: Instant
+}
+
+class GameParticipationId {
+    gameId: Long
+    playerId: UUID
+}
+
+/'
+    relationship definitions
+'/
+
+Round --- Game
+Round -- RoundParticipation
+RoundParticipation -- RoundParticipationId
+GameParticipation -- GameParticipationId
+RoundParticipation -- Player
+GameParticipation -- Player
+GameParticipation -- Game
+GameParticipation -- Team
+Game -- Team
+
+@enduml
